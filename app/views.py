@@ -2,6 +2,7 @@ from django.shortcuts import render
 from app.forms import *
 from app.models import *
 from django.http import HttpResponse
+from django.core.mail import send_mail
 # Create your views here.
 
 def User_Registration(request):
@@ -24,6 +25,13 @@ def User_Registration(request):
             NSPFO = PFO.save(commit=False)
             NSPFO.username = NSUFD
             NSPFO.save()
+            #sending mail to user 
+            send_mail('Registration',
+                      'Registration Successfully Done',
+                      'aarnab017@gmail.com',
+                      [NSUFD.email],
+                      fail_silently=False)
+            
             return HttpResponse('<script>alert("Sign Up Successful")</script>')
         else:
             return HttpResponse('<script>alert("Invalid Data")</script>')
