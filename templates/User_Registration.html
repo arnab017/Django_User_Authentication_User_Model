@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User_Registration</title>
+		<style>
+			body{
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 1em;
+			}
+			h1{
+				margin-bottom: 40px;
+			}
+			form{
+				width: fit-content;
+				box-shadow: -10px 10px 30px grey;
+				border-radius: 20px;
+				padding: 10px;
+				transition: .5s;
+			}
+			form:hover{
+				box-shadow: 10px 10px 30px grey;
+			}
+			select{
+				width: 100%;
+				font-size: 1.1em;
+			}
+			input,textarea{
+				font-size: 1.1em;
+			}
+			input[type="submit"]{
+				padding: 10px 20px;
+				font-size: 1.1em;
+				border: none;
+				background-color: black;
+				color: white;
+				border-radius: 20px;
+				transition: .6s;
+			}
+			input[type="submit"]:hover{
+				background-color: rgb(16, 70, 141);
+				box-shadow: -10px 10px 20px black;
+			}
+			tr:not(input[type="submit"]){
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Sign Up Form</h1>
+			<form method="POST" enctype="multipart/form-data">
+				<table cellpadding="10">
+					{% csrf_token %}
+					<tr>
+						{{ UFO }}
+					</tr>
+					<tr>
+						{{ PFO }}
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" value="Sign Up" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</center>
+	</body>
+</html>
