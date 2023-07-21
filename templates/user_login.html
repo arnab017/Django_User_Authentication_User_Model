@@ -1,16 +1,16 @@
 {% extends 'dummy.html' %}
 
 {% block title %}
-<title>Sign Up Page</title>
+<title>Home</title>
 {% endblock %} 
 
-{% block body_block %} 
+{% block body_block %}
 <style>
 	body{
 		font-size: 1em;
 	}
 	h1{
-		margin: 20px 0;
+		margin: 70px 0 20px 0;
 	}
 	form{
 		width: fit-content;
@@ -27,7 +27,7 @@
 		width: 100%;
 		font-size: 1.1em;
 	}
-	input,textarea{
+	input{
 		font-size: 1.1em;
 	}
 	input[type="submit"]{
@@ -48,23 +48,24 @@
 	}
 </style>
 <center>
-	<h1>Sign Up Form</h1>
-	<form method="POST" enctype="multipart/form-data">
-		<table cellpadding="10">
-			{% csrf_token %}
-			<tr>
-				{{ UFO }}
-			</tr>
-			<tr>
-				{{ PFO }}
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="Sign Up" />
-				</td>
-			</tr>
-		</table>
-	</form>
+    <h1>Log In Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table cellpadding="10">
+            <tr>
+                <td><label for="un">Username</label></td>
+                <td><input type="text" name="un" id="un"></td>
+            </tr>
+            <tr>
+                <td><label for="pw">Password</label></td>
+                <td><input type="password" name="pw" id="pw"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Log In">
+                </td>
+            </tr>
+        </table>
+    </form>
 </center>
-{% endblock %}
-
+{% endblock %} 
