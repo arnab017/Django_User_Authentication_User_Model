@@ -1,0 +1,33 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+<title>Display_details</title>
+{% endblock %} 
+
+{% block body_block %}
+<style>
+    td{
+        font-size: 1.7em;
+    }
+</style>
+    <center>
+        <table>
+            <tr>
+                <td><strong>Username</strong></td>
+                <td>{{UO.username}}</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>{{UO.email}}</td>
+            </tr>
+            <tr>
+                <td><strong>Address</strong></td>
+                <td>{{PO.address}}</td>
+            </tr>
+            <tr>
+                <td><strong>Profile Picture</strong></td>
+                <td><img src="{{PO.profile_pic.url}}" alt="profile pic" width="300px"></td>
+            </tr>
+        </table>
+    </center>
+{% endblock %} 

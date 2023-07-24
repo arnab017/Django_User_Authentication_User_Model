@@ -76,3 +76,41 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('home_page'))
+
+@login_required
+def display_details(request):
+    username = request.session.get('username')
+    UO = User.objects.get(username=username)
+    PO = Profile.objects.get(username=UO)
+    d = {'UO':UO, 'PO':PO}
+    return render(request, 'display_details.html',d)
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        pw = request.POST.get('pw')
+        un = request.session.get('username')
+        UO = User.objects.get(username=un)
+        UO.set_password(pw)
+        UO.save()
+        return HttpResponse('<script>alert("Password change Successful")</script>')
+    return render(request, 'change_password.html')
+
+def reset_password(request):
+    if request.method == 'POST':
+        un = request.POST.get('un')
+        pw = request.POST.get('pw')
+        rpw = request.POST.get('rpw')
+        LUO = User.objects.filter(username=un)
+        if LUO:
+            if pw==rpw:
+                UO = LUO[0]
+                UO.set_password(pw)
+                UO.save()
+                return HttpResponse('<script>alert("Password Reset Successful")</script>')
+            else:
+                return HttpResponse('<script>alert("Password Mis-Match")</script>')
+        else:
+            return HttpResponse('<script>alert("Invalid username")</script>')
+            
+    return render(request, 'reset_password.html')
